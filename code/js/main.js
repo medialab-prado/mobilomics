@@ -7,7 +7,7 @@ var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</
     streets = L.tileLayer(mbUrl, {id: 'mapbox.streets', attribution: mbAttr});
 
   var mymap = L.map('mapid', {
-    center: [139.742,24.515364],
+    center: [40.48935,-3.68274],
     zoom: 6,
     layers: [satellite, streets]
   });
@@ -36,7 +36,7 @@ var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</
 
 
 
-  var atlantaLayer = L.geoJson(atlanta);
+  var twitterLayer = L.geoJson(geojsonFeature);
 
   /*var geojson = L.geoJson(geojsonSample, {
     pointToLayer: function (feature, latlng) {
@@ -53,7 +53,7 @@ var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</
      }
    }).addTo(mymap);*/
     //Add geoJsonLayer to markercluster group
-    markers.addLayer(atlantaLayer);
+    markers.addLayer(twitterLayer);
     //ADD the markercluster group to the map
     mymap.addLayer(markers);
     //mymap.fitBounds(markers.getBounds());
