@@ -32,35 +32,26 @@ var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</
 
 
   //Add a layer for markerClusterGroup
-
   var markers=L.markerClusterGroup();
 
-  /*var atlantaLayer = L.geoJson(atlanta, {
+
+
+  var atlantaLayer = L.geoJson(atlanta);
+
+  /*var geojson = L.geoJson(geojsonSample, {
     pointToLayer: function (feature, latlng) {
       return L.circleMarker(latlng, geojsonMarkerOptions);
     }
   });*/
 
-  var atlantaLayer = L.geoJson(atlanta);
 
 
 
-/*  for (var i=0; i< atlanta.length; i++) {
-    var a = atlanta[i];
-    var marker = L.marker(new L.LatLng)
-  }*/
-  //User jQuery to load date from GeoJSON file
-  /*$.getJSON('prueba.json', function(data) {
-    var geoJsonLayer = L.geoJson(data, {
-      onEachFeature: function(feature, layer){
-        layer.setIcon(icon);
-      }
-    });*/
-  /*  L.geoJson(atlanta,{
-      pointToLayer: function(feature, latlng) {
-        return L.circleMarker(latlng, geojsonMarkerOptions);
-      }
-    }).addTo(mymap);*/
+   /*L.geoJson(atlanta, {
+     pointToLayer: function (feature, latlng) {
+       return L.circleMarker(latlng, geojsonMarkerOptions);
+     }
+   }).addTo(mymap);*/
     //Add geoJsonLayer to markercluster group
     markers.addLayer(atlantaLayer);
     //ADD the markercluster group to the map
