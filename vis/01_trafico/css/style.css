@@ -1,0 +1,11 @@
+body { margin:0; padding:0; }
+
+.cell{
+  width: 40px  !important;
+  height:40px !important;
+}
+.cell > div{
+  line-height: 30px;
+  vertical-align: middle;
+  text-align: center;
+}
