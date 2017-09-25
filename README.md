@@ -4,6 +4,7 @@ Visualizar17*
 
 (English below)
 Web del Proyecto: https://medialab-prado.github.io/mobilomics/
+
  Este proyecto trata de desarrollar una plataforma para visualizar patrones y perfiles asociados a distintos objetivos: eventos, localizaciones geográficas o grupos de población específicos. Resulta crítico para abordar fenómenos como las migraciones por alguna de sus causas.
 
 Pretende ofrecer una adecuada visualización de la movilidad y las migraciones que se pueda adaptar a grupos de población específica y grupos de interés según el ámbito de estudio relacionado.
