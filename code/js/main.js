@@ -10,7 +10,9 @@ var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</
   var mymap = L.map('mapid', {
     center: [40.48935,-3.68274],
     zoom: 6,
-    layers: [satellite, streets]
+    layers: [satellite, streets],
+    timeDimension: true,
+    timeDimensionControl: true
   });
   var baseLayers = {
     "Satellite": satellite,
@@ -36,11 +38,11 @@ function onEachFeature( feature, layer) {
 }
 
   //Add a layer for markerClusterGroup
-  var markers=L.markerClusterGroup();
+  //var markers=L.markerClusterGroup();
 
 
 
-  var twitterLayer = L.geoJson(geojsonFeature);
+  //var twitterLayer = L.geoJson(geojsonFeature);
 
   /*var traficoLayer = L.geoJson(int_loc, {
     onEachFeature: function (feature, layer) {
@@ -50,18 +52,31 @@ function onEachFeature( feature, layer) {
   var socialLayer = L.geoJson(socialFeature, {
     pointToLayer: function (feature, latlng) {
       return L.circleMarker(latlng, geojsonMarkerOptions);
-    },
-    style: function (feature) {
-      switch (feature.properties.hour) {
-        case 4: return { radius: 8,fillColor: "#990000",color: "#000",weight: 1,opacity: 1,fillOpacity: 0.8};
-        case 5: return { radius: 8,fillColor: "#000099",color: "#000",weight: 1,opacity: 1,fillOpacity: 0.8};
-        case 6: return { radius: 8,fillColor: "#006600",color: "#000",weight: 1,opacity: 1,fillOpacity: 0.8};
-        case 7: return { radius: 8,fillColor: "#ff0000",color: "#000",weight: 1,opacity: 1,fillOpacity: 0.8};
-        case 8: return { radius: 8,fillColor: "#990099",color: "#000",weight: 1,opacity: 1,fillOpacity: 0.8};
-        case 9: return { radius: 8,fillColor: "#ff0099",color: "#000",weight: 1,opacity: 1,fillOpacity: 0.8};
-      }
     }
+  /*  style: function (feature) {
+      var x = (feature.properties.hour);
+      switch (true) {
+        case (x<7) : return { radius: 8,fillColor: "#990000",color: "#000",weight: 1,opacity: 1,fillOpacity: 0.8};
+        case (x>7 && x<15) : return { radius: 8,fillColor: "#000099",color: "#000",weight: 1,opacity: 1,fillOpacity: 0.8};
+        case (x>15 && x<18): return { radius: 8,fillColor: "#006600",color: "#000",weight: 1,opacity: 1,fillOpacity: 0.8};
+        case (x>18 && x<20): return { radius: 8,fillColor: "#ff0000",color: "#000",weight: 1,opacity: 1,fillOpacity: 0.8};
+        case (x>20 && x<24): return { radius: 8,fillColor: "#990099",color: "#000",weight: 1,opacity: 1,fillOpacity: 0.8};
+        default: return { radius: 8,fillColor: "#ff0099",color: "#000",weight: 1,opacity: 1,fillOpacity: 0.8};
+      }
+    }*/
   });
+  L.markerClusterGroup.layerSupport().addTo(mymap).checkIn(socialLayer);
+  //Create a marker layer
+  var sliderControl = L.control.sliderControl({position: "topleft", layer: socialLayer, range: true});
+  //add the slider to the map
+  mymap.addControl(sliderControl);
+  //initialize the slider
+  sliderControl.startSlider();
+
+
+  //$('#slider-timestamp').html(options.)
+
+
   var trafficLayer = L.geoJson(trafficFeature);
 
   /*var geojson = L.geoJson(geojsonSample, {
@@ -79,9 +94,8 @@ function onEachFeature( feature, layer) {
      }
    }).addTo(mymap);*/
     //Add geoJsonLayer to markercluster group
-    markers.addLayer(socialLayer);
+    //markers.addLayer(sliderControl);
     //ADD the markercluster group to the map
-    mymap.addLayer(markers);
-    //mymap.fitBounds(markers.getBounds());
-    //markers.addTo(mymap);
+    //mymap.addLayer(markers);
+
 //});
