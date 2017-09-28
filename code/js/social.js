@@ -17,9 +17,10 @@ var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</
     pitch: 80
   });
   var baseLayers = {
-    "Satellite": satellite,
-    "Streets": streets,
-    "Dark": dark
+    "Dark": dark,
+    /*"Satellite": satellite,
+    "Streets": streets*/
+    
   };
 
 
