@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+      body, html { margin:0; padding:0; height:100%;}
+      body { font-family:sans-serif; }
+      body * { font-weight:200;}
+      h1 { position:absolute; background:white; padding:10px;}
+      #map { height:100%; }
+      .leaflet-container {
+        background: rgba(0,0,0,.8) !important;
+      }
+
+      #all-examples-info { position:absolute; background:white; font-size:16px; padding:20px; top:100px; width:350px; line-height:150%; border:1px solid rgba(0,0,0,.2);}
+    </style>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    <script src="build/heatmap.js"></script>
+    <script src="plugins/leaflet-heatmap/leaflet-heatmap.js"></script>
+  </head>
+  <body>
+   <h1></h1>
+
+   <div id="map"></div>
+   <script src="data/line27.geojson" type="text/javascript"></script>
+    <script>
+      window.onload = function() {
+        var testData = line27Feature
+        var baseLayer = L.tileLayer(
+          'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+            attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
+            maxZoom: 18
+          }
+        );
+        var cfg = {
+          // radius should be small ONLY if scaleRadius is true (or small radius is intended)
+          "radius": 2,
+          "maxOpacity": .8,
+          // scales the radius based on map zoom
+          "scaleRadius": true,
+          // if set to false the heatmap uses the global maximum for colorization
+          // if activated: uses the data maximum within the current map boundaries
+          //   (there will always be a red spot with useLocalExtremas true)
+          "useLocalExtrema": true,
+          // which field name in your data represents the latitude - default "lat"
+          latField: 'latitude',
+          // which field name in your data represents the longitude - default "lng"
+          lngField: 'longitude',
+          // which field name in your data represents the data value - default "value"
+          valueField: 'viajeros'
+        };
+        var heatmapLayer = new HeatmapOverlay(cfg);
+        var map = new L.Map('map', {
+          center: new L.LatLng(25.6586, -80.3568),
+          zoom: 4,
+          layers: [baseLayer, heatmapLayer]
+        });
+        heatmapLayer.setData(testData);
+        // make accessible for debugging
+        layer = heatmapLayer;
+      };
+    </script>
+  </body>
+</html>
