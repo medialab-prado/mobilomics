@@ -3147,7 +3147,8 @@
 			border-bottom-color: #ffffff;
 		}
 		#intro img {
-			width: 500px
+			max-width:30em;
+			padding-bottom:1em;
 		}
 		
 		#intro input[type="submit"],
