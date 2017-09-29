@@ -3108,7 +3108,9 @@
 		text-align: center;
 		z-index: 1;
 		min-height: 100vh;
-	}
+		
+}
+
 
 		#intro input, #intro select, #intro textarea {
 			color: #ffffff;
@@ -3144,7 +3146,9 @@
 		#intro hr {
 			border-bottom-color: #ffffff;
 		}
-
+		#intro img { width: 50%; height: 50%;
+		}
+		
 		#intro input[type="submit"],
 		#intro input[type="reset"],
 		#intro input[type="button"],
