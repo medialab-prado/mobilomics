@@ -3146,7 +3146,8 @@
 		#intro hr {
 			border-bottom-color: #ffffff;
 		}
-		#intro img { width: 50%; height: 50%;
+		#intro img {
+			width: 500px
 		}
 		
 		#intro input[type="submit"],
