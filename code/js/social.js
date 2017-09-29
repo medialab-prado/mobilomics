@@ -20,15 +20,13 @@ var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</
     "Dark": dark,
     /*"Satellite": satellite,
     "Streets": streets*/
-    
+
   };
 
 
   L.control.layers(baseLayers).addTo(mymap)
 
-  mymap.on('click', function(e) {
-    alert(e.latlng);
-  });
+
 
   var geojsonMarkerOptions = {
     radius: 8,
@@ -87,7 +85,7 @@ function onEachFeature( feature, layer) {
   //$('#slider-timestamp').html(options.)
 
 
-  var trafficLayer = L.geoJson(trafficFeature);
+  //var trafficLayer = L.geoJson(trafficFeature);
 
   /*var geojson = L.geoJson(geojsonSample, {
     pointToLayer: function (feature, latlng) {
